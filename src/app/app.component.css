@@ -1,0 +1,70 @@
+/* Header styles */
+* {
+    box-sizing: border-box;
+  }
+ 
+  /* Adjust the router-outlet styles */
+  router-outlet {
+    /* This will make the router-outlet take up the full height of the viewport minus the header height */
+    padding-top: 80px; /* adjust this value based on your header's actual height */
+    margin-top: -80px; /* to offset the padding */
+    height: calc(100vh - 80px); /* Subtract the header height */
+    overflow: auto; /* Add overflow to handle scrolling within the outlet */
+  }
+header {
+    background-color: #3e8155;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 94%;
+    z-index: 1000;
+    border-radius: 0 0 20px 20px;
+    width:100%;
+    left:0;
+}
+
+nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+
+nav ul li a {
+    font-family: Arial, sans-serif; /* Utiliser une police spécifique */
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: black;
+}
+
+.profile {
+    position: relative;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+
+

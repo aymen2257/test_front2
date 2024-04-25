@@ -1,0 +1,41 @@
+<header>
+
+		<div class="logo">
+			<a  href="/">
+				<img src="../assets/img/logo_mae.png" width="200" height="50" alt="Sirius Consult AG">
+			</a>
+		</div>
+
+		<nav>
+			<ul routerLinkActive="active">
+				<li ><a href="/agences"  routerLink="agences">Notre réseau</a></li>
+				<li ><a href="/reclamation"  routerLink="reclamation">Réclamations</a></li>
+				<li *ngIf="!showAdminBoard"><a href="/home"  routerLink="home">Home</a></li>
+
+				<li *ngIf="showAdminBoard"><a href="/admin" class="nav-link" routerLink="admin">Admin
+						Board</a></li>
+				<li  *ngIf="showModeratorBoard">
+					<a href="/mod"  routerLink="mod">Moderator Board</a>
+				</li>
+				<li ><a href="/contrat" *ngIf="isLoggedIn"  routerLink="contrat/{{id}}">contrat</a></li>
+				<li ><a href="/contact"  routerLink="contact">contact</a></li>
+
+
+			</ul>
+			<ul  *ngIf="!isLoggedIn">
+				<li ><a href="/register"  routerLink="register">Sign Up</a></li>
+				<li ><a href="/login"  routerLink="login">Login</a></li>
+			</ul>
+			<ul  *ngIf="isLoggedIn">
+				<li ><a href  (click)="logout()">LogOut</a></li>
+			</ul>
+		</nav>
+		<div *ngIf="isLoggedIn" class="profile">
+			<a href="/updateImage"  routerLink="updateImage"><img src="../assets/img/icon_user.jpg" alt="User Profile"></a>
+		</div>
+</header>
+
+<router-outlet></router-outlet>
+	
+	<app-footer></app-footer>
+

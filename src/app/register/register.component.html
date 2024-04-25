@@ -1,0 +1,69 @@
+<section class="contact">
+    <div class="container">
+        <div class="contact-container">
+            <div class="contact-image">
+                <img src="../../assets/img/sign_up.jpg" alt="Sign up image">
+            </div>
+            <div class="contact-form-container">
+                <h2>S'inscrire</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="!isSuccessful" novalidate>
+                    <div class="form-group">
+                        <label for="num">Num adhérent</label>
+                        <input type="text" id="num" formControlName="num">
+                        <div *ngIf="registerForm.get('num')?.touched && registerForm.get('num')?.invalid" style="color: red;">
+                            <div *ngIf="registerForm.get('num')?.errors?.['required']">Member number is required.</div>
+                            <div *ngIf="registerForm.get('num')?.errors?.['minlength'] || registerForm.get('num')?.errors?.['maxlength']">Member number must be exactly 9 characters.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" formControlName="email">
+                        <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" style="color: red;">
+                            <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+                            <div *ngIf="registerForm.get('email')?.errors?.['email']">Email must be a valid email address.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cin">CIN</label>
+                        <input type="text" id="cin" formControlName="cin">
+                        <div *ngIf="registerForm.get('cin')?.touched && registerForm.get('cin')?.invalid" style="color: red;">
+                            <div *ngIf="registerForm.get('cin')?.errors?.['required']">CIN is required.</div>
+                            <div *ngIf="registerForm.get('cin')?.errors?.['minlength'] || registerForm.get('cin')?.errors?.['maxlength']">CIN must be exactly 8 characters.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" formControlName="password">
+                        <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" style="color: red;">
+                            <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+                            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="matchingPassword">Confirm Password</label>
+                        <input type="password" id="matchingPassword" formControlName="matchingPassword">
+                        <div *ngIf="registerForm.get('matchingPassword')?.touched && registerForm.get('matchingPassword')?.invalid" style="color: red;">
+                            <div *ngIf="registerForm.get('matchingPassword')?.errors?.['required']">Confirm Password is required.</div>
+                            <div *ngIf="registerForm.get('matchingPassword')?.errors?.['minlength']">Confirm Password must be at least 6 characters.</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" id="using2FA" class="form-check-input" formControlName="using2FA">
+                        <label class="form-check-label" for="using2FA">Use Two Step Verification</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                    <div *ngIf="registerForm.invalid && isSignUpFailed" style="color: red;">
+                        Signup failed!<br>{{ errorMessage }}
+                    </div>
+                </form>
+                <div *ngIf="isSuccessful" style="color: green;">
+                    Your registration is successful! We've sent you a verification mail to your email account.
+                    <div *ngIf="isUsing2FA">
+                        <p>Scan this QR code using Google Authenticator app on your phone to use it later to login</p>
+                        <img [src]="qrCodeImage" class="img-fluid" alt="QR Code for 2FA">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

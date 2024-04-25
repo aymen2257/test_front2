@@ -1,0 +1,43 @@
+.values {
+    background-color: #f0f8ff; /* Couleur de fond */
+    padding: 50px 0;
+    text-align: center;
+}
+
+.values h2 {
+    font-size: 24px; /* Taille du titre */
+    font-weight: bold; /* Texte en gras */
+    color: #434344; /* Couleur du texte plus foncée */
+    margin-bottom: 8px;
+}
+
+.subtext {
+    font-size: 18px; /* Taille du texte en dessous */
+    color: #5f5f60; /* Couleur du texte moins foncée */
+    margin-bottom: 8px;
+}
+
+.value {
+    display: inline-block;
+    margin: 0 20px;
+    width: 200px; /* Taille du cadre */
+}
+
+.icon-container {
+    border: 4px solid #006400; /* Bordure en gras et couleur plus foncée */
+    border-radius: 50%; /* Arrondissement */
+    padding: 20px; /* Espacement autour de l'icône */
+    margin-bottom: 20px; /* Marge en bas */
+    font-size: 40px; /* Taille de l'icône */
+    color: #006400; /* Couleur de l'icône plus foncée */
+}
+
+
+
+.value p {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #333333; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+    white-space: nowrap; /* Empêcher les sauts de ligne */
+}

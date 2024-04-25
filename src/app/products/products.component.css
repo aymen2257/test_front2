@@ -1,0 +1,74 @@
+.products .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+
+/* Products section styles */
+.products {
+    background-color: white ; /* Changer le fond de la section des produits */
+    padding: 50px 0;
+    text-align: center;
+}
+
+.card {
+    background-color: #98ff98; /* Changer le fond des cartes des produits */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(20% - 20px); /* Réduire la largeur des cartes */
+    margin-right: 5px; /* Espacement entre les cartes */
+    margin-left: 5px; /* Espacement entre les cartes */
+    height: auto; /* Permettre à la hauteur de s'adapter dynamiquement */
+    display: flex;
+    flex-direction: column; /* Mettre le contenu en colonne */
+    word-wrap: break-word; /* Forcer les mots à se diviser */
+    transition: background-color 0.3s ease; /* Transition pour le hover */
+}
+
+.card:hover {
+    background-color: #74fe74 ; /* Couleur plus foncée au survol */
+}
+
+
+.card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.card a h3 {
+    font-size: 20px;    
+    margin-bottom: 10px;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card p {
+    flex-grow: 1; /* Pour que les cartes aient la même hauteur */
+    border: 2px solid #98ff98; /* Ajouter une bordure */
+    border-radius: 10px; /* Arrondir les coins */
+    background-color: white; /* Couleur de fond */
+    font-family: Arial, sans-serif; /* Utiliser une police spécifique */
+    font-size: 16px; /* Taille moyenne du texte */
+    color: #333333; /* Couleur du texte */
+    line-height: 1.6; /* Espacement des lignes */
+    max-width: 800px; /* Limiter la largeur du paragraphe */
+}
+
+.about h2,
+.products h2 {
+    font-family: Arial, sans-serif; /* Utiliser une police spécifique */
+    font-size: 24px; /* Taille plus grande pour les titres */
+    font-weight: bold; /* Texte en gras */
+    margin-bottom: 20px; /* Espacement après le titre */
+    text-align: center; /* Centrer le titre */
+}
+

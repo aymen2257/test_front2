@@ -1,0 +1,82 @@
+/* Base styling */
+.agence-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 80px;
+  height: calc(100vh - 80px);
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif; /* Ensuring a modern font is used */
+}
+
+.map-container {
+  order: 2;
+  width: 50%;
+  height: calc(80vh - 100px);
+  margin-top: 20px;
+}
+
+.data-container {
+  order: 1;
+  width: 48%;
+  height: calc(80vh - 100px);
+  padding: 20px; /* Increased padding */
+  overflow-y: auto;
+  margin-top: 20px;
+  background: #ffffff; /* Clean white background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Larger shadow for depth */
+}
+
+/* Improvements for mobile responsiveness */
+@media (max-width: 768px) {
+  .agence-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .map-container, .data-container {
+    width: 90%;
+    height: auto; /* Auto height for better adaptability */
+    margin-top: 10px;
+  }
+}
+
+/* Dropdown styling */
+.dropdown-label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.dropdown-select:hover {
+  background-color: #e9e9e9; /* Slightly darker on hover */
+}
+
+.dropdown-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0056b3; /* Blue glow effect */
+}
+
+/* List of agencies styling */
+.agency-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.agency-item {
+  background-color: #f9f9f9;
+  border-left: 5px solid #0056b3; /* Blue accent on the side */
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}

@@ -1,0 +1,110 @@
+<header>
+	<style>
+		.col-md-12 {
+  display: flex;
+  justify-content: center; /* Centers the card horizontally */
+  align-items: center; /* Centers the card vertically */
+  min-height: 100vh; /* Ensures the container fills the whole vertical height */
+  padding: 15px; /* Provides some padding around the edges */
+}
+
+.card-container {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Adds a subtle shadow to make the card pop out */
+  border-radius: 5px; /* Rounds the corners of the card */
+  max-width: 400px; /* Sets a max-width for the card */
+  margin: 50px; /* Adds margin around the card */
+  padding: 50px; /* Adds padding inside the card */
+  background: white; /* Background color for the card */
+}
+
+.profile-img-card {
+  width: 96px; /* Sets a fixed width for the profile image */
+  height: 96px; /* Sets a fixed height for the profile image */
+  margin: 0 auto 20px; /* Centers the image and adds margin below */
+  border-radius: 50%; /* Makes the image circular */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Adds space between form groups */
+}
+
+.alert {
+  text-align: center; /* Centers the alert text */
+  border-radius: 5px; /* Rounds the corners of the alert */
+  padding: 10px; /* Adds padding inside the alert */
+  margin-bottom: 20px; /* Adds space below the alert */
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.btn {
+  display: block; /* Ensures the button expands to fill the block */
+  width: 100%; /* Makes the button full width */
+  margin-top: 10px; /* Adds space above the button */
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.btn-primary:hover {
+  background-color: #286090;
+  border-color: #204d74;
+}
+
+/* Styling for change password link */
+a {
+  display: block; /* Makes the link a block element */
+  text-align: center; /* Centers the link */
+  margin-top: 20px; /* Adds space above the link */
+  color: #337ab7; /* Sets the link color */
+  text-decoration: none; /* Removes underline from the link */
+}
+
+a:hover {
+  text-decoration: underline; /* Adds underline on hover for better indication */
+}
+	</style>
+</header>
+<div class="col-md-12">
+	<div class="card card-container">
+		<img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+		<div class="form-group" *ngIf="status == tokenStatus.VALID">
+			<div class="alert alert-success" role="alert">Email verified successfully. Please login.</div>
+		</div>
+		<div class="form-group" *ngIf="status == tokenStatus.EXPIRED">
+			<div class="alert alert-danger" role="alert">Link Expired!</div>
+			<button class="btn btn-primary btn-block" (click)="resendToken()">Re-send Verification Email</button>
+		</div>
+		<div class="form-group" *ngIf="status == tokenStatus.SENDING">
+			<div class="alert alert-info" role="alert">Sending mail...</div>
+		</div>
+		<div class="form-group" *ngIf="status == tokenStatus.SENT">
+			<div class="alert alert-info" role="alert">Sent verification email</div>
+		</div>
+		<div class="form-group" *ngIf="status == tokenStatus.INVALID">
+			<div class="alert alert-danger" role="alert">Invalid Link</div>
+		</div>
+		<div class="form-group" *ngIf="errorMessage">
+			<div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+		</div>
+	</div>
+</div>

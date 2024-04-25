@@ -1,0 +1,127 @@
+/* Footer styles */
+
+footer {
+    background-color: #9ebf43;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom:0;
+    width: 100%;
+    z-index: 1000;
+    border-radius: 20px 20px 0 0;
+}
+
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-links {
+    text-align: left;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #333;
+    text-decoration: none;
+    /* Supprimer les soulignements sous les liens */
+}
+
+
+.footer-info {
+    text-align: left;
+    /* Aligner le texte à gauche */
+}
+
+.footer-info p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    /* Supprimer les marges par défaut */
+    line-height: 1.6;
+    /* Espacement des lignes */
+}
+
+
+
+.footer-info p i {
+    margin-right: 8px;
+    /* Espacement entre l'icône et le texte */
+    font-size: 20px;
+    /* Taille de l'icône */
+    vertical-align: middle;
+    /* Aligner l'icône verticalement */
+    color: #333;
+    /* Changer la couleur de l'icône */
+}
+
+
+.email-subscribe {
+    margin-top: 20px;
+    display: flex;
+    /* Utiliser flexbox */
+    align-items: center;
+    /* Aligner les éléments verticalement au centre */
+}
+
+.email-subscribe .email-input {
+    flex: 1;
+    /* Le champ email prendra autant d'espace que possible */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    /* Ajouter un espace entre l'input et le bouton */
+}
+
+.email-subscribe .button-submit {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media a {
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+}
+
+button {
+    background-color:white;
+    color:MediumSeaGreen;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color:#9cbd4b;
+    color: white;
+}
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+}

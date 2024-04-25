@@ -1,0 +1,108 @@
+.contact {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    text-align: center;
+    margin-top: 50px; /* Ajoutez de l'espace entre la section de contact et le header */
+    margin-bottom: 50px; /* Ajoutez de l'espace entre la section de contact et le footer */
+}
+
+
+.contact .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #32CD32 ;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between; /* Pour aligner l'image et le formulaire sur la même ligne */
+    border: 2px solid #32CD32; /* Ajouter une bordure */
+    border-radius: 10px; /* Arrondir les coins */
+    overflow: hidden; /* Pour éviter que les coins arrondis ne dépassent */
+    max-width: 1000px; /* Définir la largeur maximale du cadre */
+    width:980px;
+    margin: 0 auto; /* Pour centrer le cadre horizontalement */
+}
+
+
+.contact-image {
+    flex: 0 0 40%; /* Pour que l'image occupe 30% de la largeur */
+    display: flex; /* Pour aligner l'image au centre */
+    justify-content: center; /* Pour aligner l'image au centre */
+    align-items: center; /* Pour aligner l'image au centre */
+    overflow: hidden; /* Pour éviter que les coins arrondis ne dépassent */
+}
+
+.contact-image img {
+    width: 95%; /* Ajustez la taille de l'image selon votre préférence */
+    border-radius: 10px; /* Arrondir tous les coins */
+}
+
+.contact-form-container {
+    flex: 0 0 60%; /* Pour que le formulaire occupe 70% de la largeur */
+}
+
+.contact-form {
+    padding: 20px; /* Ajouter un remplissage au formulaire */
+}
+
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: MediumSeaGreen;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button[type="submit"] {
+    background-color: #32CD32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #068e06;
+    color: white;
+}
