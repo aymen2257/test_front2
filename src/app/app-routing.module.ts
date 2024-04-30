@@ -20,6 +20,12 @@ import { ContratsComponent } from './contrats/contrats.component';
 import { ReclamationsComponent } from './reclamations/reclamations.component';
 import { UnProduitComponent } from './un-produit/un-produit.component';
 import { AgenceComponent } from './agence/agence.component';
+import { ListeContratComponent } from './liste-contrat/liste-contrat.component';
+import { ListeUsersComponent } from './liste-users/liste-users.component';
+import { ListeReclamationsComponent } from './liste-reclamations/liste-reclamations.component';
+import { AddBrancheComponent } from './add-branche/add-branche.component';
+import { ListeBranchesComponent } from './liste-branches/liste-branches.component';
+import { ListeProduitsComponent } from './liste-produits/liste-produits.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -43,6 +49,14 @@ const routes: Routes = [
   { path: 'produit', component:UnProduitComponent },
   {path:"contrat/:id",component:ContratsComponent},
   {path:"agences",component:AgenceComponent},
+
+  { path: 'listeContrats', component:ListeContratComponent },
+  { path: 'listeAdherent', component:ListeUsersComponent },
+  { path: 'listeReclamation', component:ListeReclamationsComponent},
+  { path: 'add-branche', component:AddBrancheComponent},
+  { path: 'add-branche/:id', component:AddBrancheComponent },
+  { path: 'branches', component:ListeBranchesComponent},
+  { path: 'produits', component:ListeProduitsComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

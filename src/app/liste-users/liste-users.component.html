@@ -1,0 +1,55 @@
+<!-- NAVBAR -->
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Users</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Dashboard</a></li>
+        </ul>
+        <div class="data">
+            <div class="content-data">
+                <div class="containerListe">
+                    <h1>Liste Users</h1>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>UserName</th>
+                                    <th>Num Adherent</th>
+                                    <th>email</th>
+                                    <th>Addresse</th>
+                                    <th>CIN</th>
+                                    <th>Sex</th>
+                                    <th>Date Naissance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let user of users">
+                                    <tr *ngIf="user.displayName.indexOf('Admin') === -1">
+                                        <td>{{user.id}}</td>
+                                        <td>{{user.displayName}}</td>
+                                        <td>{{user.num}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.address}}</td>
+                                        <td>{{user.cin}}</td>
+                                        <td>{{user.sex}}</td>
+                                        <td>{{user.birth_date}}</td>
+                
+                                    </tr>
+                                </ng-container>
+                                <!-- Ajoutez d'autres lignes de contrats ici si nécessaire -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- NAVBAR -->
+  
+

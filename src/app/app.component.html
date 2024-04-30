@@ -1,4 +1,6 @@
-<header>
+<app-sidebar *ngIf="showAdminBoard"></app-sidebar>
+
+<header *ngIf="!showAdminBoard">
 
 		<div class="logo">
 			<a  href="/">
@@ -33,9 +35,9 @@
 		<div *ngIf="isLoggedIn" class="profile">
 			<a href="/updateImage"  routerLink="updateImage"><img src="../assets/img/icon_user.jpg" alt="User Profile"></a>
 		</div>
-</header>
+</header> 
 
 <router-outlet></router-outlet>
 	
-	<app-footer></app-footer>
+<app-footer *ngIf="!showAdminBoard"></app-footer>
 

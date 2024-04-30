@@ -1,0 +1,54 @@
+
+
+<!-- NAVBAR -->
+<section id="content">
+
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Branches</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Dashboard</a></li>
+        </ul>
+        
+        <div class="data">
+            <div class="content-data">
+                <div class="containerListe">
+                    <h1>Liste branches</h1>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id branche</th>
+                                    <th>Code Branche</th>
+                                    <th>Libelle Branche</th>
+                                    <th>modifier</th>
+                                    <th>supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let branche of branches" >
+                                    <td>{{branche.id}}</td>
+                                    <td>{{branche.codeBranche}}</td>
+                                    <td>{{branche.libelleBranche}}</td> 
+                                    <td><i style="color: rgb(218, 218, 1);" (click)=navigate(branche.id) class="bi bi-pencil-fill"></i></td>
+                                    <td><i style="color: rgb(193, 0, 0);" (click)=deleteBranche(branche.id)  class="bi bi-archive-fill"></i></td>
+                                </tr>
+                                <!-- Ajoutez d'autres lignes de branches ici si nécessaire -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="payment-button">
+                        <button  (click)=navigate2()>Ajouter Branche</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- NAVBAR -->
+  
+
+

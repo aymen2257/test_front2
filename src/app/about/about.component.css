@@ -1,29 +1,11 @@
-/* About section styles */
-.about {
-    background-color: #f0f8ff;
-    padding: 50px 0;
-    text-align: center; /* Centrer le texte */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif !important;
 }
 
-
-.about h2,
-.products h2 {
-    font-family: Arial, sans-serif; /* Utiliser une police spécifique */
-    font-size: 24px; /* Taille plus grande pour les titres */
-    font-weight: bold; /* Texte en gras */
-    margin-bottom: 20px; /* Espacement après le titre */
-    text-align: center; /* Centrer le titre */
-}
-
-.about p {
-    font-family: 'Arial', sans-serif; /* Utiliser une police spécifique */
-    font-size: 16px; /* Taille moyenne du texte */
-    color: #333333; /* Couleur du texte */
-    line-height: 1.6; /* Espacement des lignes */
-    max-width: 800px; /* Limiter la largeur du paragraphe */
-    margin: 0 auto 20px; /* Centrer horizontalement et ajouter un espacement en bas */
-    padding: 20px; /* Ajouter un remplissage */
-    border: 2px solid #98ff98; /* Ajouter une bordure */
-    border-radius: 10px; /* Arrondir les coins */
-    background-color: white; /* Couleur de fond */
+img {
+  width: 300px; 
+  height: 400px;
+  place-items: center;
 }

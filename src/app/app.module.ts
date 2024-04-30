@@ -30,6 +30,15 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { ReclamationsComponent } from './reclamations/reclamations.component';
 import { UnProduitComponent } from './un-produit/un-produit.component';
 import { AgenceComponent } from './agence/agence.component';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { ListeContratComponent } from './liste-contrat/liste-contrat.component';
+import { ListeUsersComponent } from './liste-users/liste-users.component';
+import { ListeReclamationsComponent } from './liste-reclamations/liste-reclamations.component';
+import { ListeProduitsComponent } from './liste-produits/liste-produits.component';
+import { ListeBranchesComponent } from './liste-branches/liste-branches.component';
+import { AddBrancheComponent } from './add-branche/add-branche.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 
  
 @NgModule({
@@ -59,7 +68,14 @@ import { AgenceComponent } from './agence/agence.component';
     UpdatePasswordComponent,
     ReclamationsComponent,
     UnProduitComponent,
-    AgenceComponent
+    AgenceComponent,
+    ListeContratComponent,
+    ListeUsersComponent,
+    ListeReclamationsComponent,
+    ListeProduitsComponent,
+    ListeBranchesComponent,
+    AddBrancheComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -67,14 +83,12 @@ import { AgenceComponent } from './agence/agence.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    
-
-   
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
-    authInterceptorProviders
+    authInterceptorProviders,
+    // provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [AppComponent]
 })
