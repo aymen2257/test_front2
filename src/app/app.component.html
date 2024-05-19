@@ -9,7 +9,7 @@
     <nav  >
         <ul routerLinkActive="active">
             <!-- Admin Board visible only to admins -->
-          
+
 
             <!-- Home and Contact visible to regular users -->
             <li *ngIf="isLoggedIn && !showAdminBoard">
@@ -17,7 +17,7 @@
             </li>
             <li *ngIf="isLoggedIn && !showAdminBoard">
                 <a href="/contact" routerLink="contact">Contact</a>
-                
+
             </li>
             <li *ngIf="isLoggedIn && !showAdminBoard">
                 <a href="/reclamation" routerLink="reclamation">Reclamation</a>
@@ -43,14 +43,17 @@
     </nav>
     <!-- Profile image visible to all logged-in users -->
     <div *ngIf="isLoggedIn" class="profile">
-        <a href="/updateImage" routerLink="updateImage">
-            <img src="../assets/img/icon_user.jpg" alt="User Profile">
-        </a>
+      <a href="/profile" routerLink="profile">
+        <img *ngIf="safeImage; else defaultIcon" [src]="safeImage" alt="User Profile">
+        <ng-template #defaultIcon>
+          <img src="../assets/img/icon_user.jpg" alt="User Profile">
+        </ng-template>
+      </a>
     </div>
 </header>
 
 
 <router-outlet></router-outlet>
-	
+
 <app-footer *ngIf="!showAdminBoard"></app-footer>
 

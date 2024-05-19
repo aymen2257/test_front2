@@ -26,6 +26,9 @@ import { ListeReclamationsComponent } from './liste-reclamations/liste-reclamati
 import { AddBrancheComponent } from './add-branche/add-branche.component';
 import { ListeBranchesComponent } from './liste-branches/liste-branches.component';
 import { ListeProduitsComponent } from './liste-produits/liste-produits.component';
+import { AddProduitComponent } from './add-produit/add-produit.component';
+import { ChartComponent } from './chart/chart.component';
+
 import { AuthGuard } from './_services/auth.guard';
 import { ReclamtionuserComponent } from './reclamtionuser/reclamtionuser.component';
 const routes: Routes = [
@@ -49,15 +52,21 @@ const routes: Routes = [
   { path: 'reclamation', component: ReclamationsComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_USER'] }},
   { path: 'produit', component:UnProduitComponent },
   {path:"contrat/:id",component:ContratsComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_USER'] }},
+  { path: 'produit/:id', component:UnProduitComponent },
+  {path:"contrat/:id",component:ContratsComponent},
   {path:"agences",component:AgenceComponent},
   { path: 'my-reclamations', component: ReclamtionuserComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_USER'] } },
   { path: 'listeContrats', component:ListeContratComponent },
   { path: 'listeAdherent', component:ListeUsersComponent },
   { path: 'listeReclamation', component:ListeReclamationsComponent},
+  { path: 'listeProduit', component:ListeProduitsComponent},
   { path: 'add-branche', component:AddBrancheComponent},
   { path: 'add-branche/:id', component:AddBrancheComponent },
   { path: 'branches', component:ListeBranchesComponent},
   { path: 'produits', component:ListeProduitsComponent},
+  { path: 'add-produit', component:AddProduitComponent},
+  { path: 'add-produit/:id', component:AddProduitComponent},
+  { path: 'chart', component:ChartComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

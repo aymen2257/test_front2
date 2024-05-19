@@ -21,6 +21,16 @@ export class AuthService {
   }
 
   register(user: any): Observable<any> {
+    // return this.http.post(AppConstants.AUTH_API + 'signup', {
+    //   id:user.id,
+    //   num: user.num,
+    //   email: user.email,
+    //   password: user.password,
+    //   cin:user.cin,
+    //   matchingPassword: user.matchingPassword,
+    //   socialProvider: 'LOCAL',
+    //   using2FA: user.using2FA,
+    // }, httpOptions);
     return this.http.post(AppConstants.AUTH_API + 'signup', {
       id: user.id,
       num: user.num,
@@ -56,19 +66,19 @@ export class AuthService {
     }, httpOptions);
 
   }
-  
+
   verify(credentials:any): Observable<any> {
     return this.http.post(AppConstants.AUTH_API + 'verify', credentials.code, {
     	  headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
     });
-  } 
+  }
 
   verify2(credentials:any): Observable<any> {
     return this.http.post(AppConstants.AUTH_API + 'verify2', credentials.code, {
     	  headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
     });
-  } 
-  
+  }
+
 
   verifyToken(token:any): Observable<any> {
     return this.http.post(AppConstants.AUTH_API + 'token/verify', token, {

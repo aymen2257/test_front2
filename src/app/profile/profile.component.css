@@ -1,0 +1,124 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.profile-container {
+    display: flex;
+    width: 100%;
+    height: 90vh; /* Adjust as needed */
+    max-height: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: relative;
+    margin-top: 70px; /* La hauteur du header */
+    min-height: calc(100vh - 80px); /* Hauteur totale moins la hauteur du header */
+}
+
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333;
+}
+
+.profile-card, .profile-details {
+    height: 100%;
+}
+
+.profile-card {
+    width: 30%;
+    background-color: #e0f7e4;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  /*Center the content vertically */
+}
+
+.profile-image-container {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #a3d9a5;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-info {
+    font-size: 1.2em;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.profile-details {
+    width: 70%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the content vertically */
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+}
+
+.value {
+    color: #555;
+}
+
+.edit-icon {
+    margin-left: 10px;
+    color: #666;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.edit-icon:hover {
+    color: #333;
+}
+
+.change-password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.change-password-text {
+    margin-right: 10px;
+}
+
+.change-password-icon {
+    font-size: 1.5em;
+}

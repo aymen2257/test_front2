@@ -11,7 +11,7 @@
             <li class="divider">/</li>
             <li><a href="#" class="active">Dashboard</a></li>
         </ul>
-        
+
         <div class="data">
             <div class="content-data">
                 <div class="containerListe">
@@ -31,9 +31,9 @@
                                 <tr *ngFor="let branche of branches" >
                                     <td>{{branche.id}}</td>
                                     <td>{{branche.codeBranche}}</td>
-                                    <td>{{branche.libelleBranche}}</td> 
-                                    <td><i style="color: rgb(218, 218, 1);" (click)=navigate(branche.id) class="bi bi-pencil-fill"></i></td>
-                                    <td><i style="color: rgb(193, 0, 0);" (click)=deleteBranche(branche.id)  class="bi bi-archive-fill"></i></td>
+                                    <td>{{branche.libelleBranche}}</td>
+                                    <td><i  (click)=navigate(branche.id) class="icon-pencil bi bi-pencil-square"></i></td>
+                                    <td><i  (click)=deleteBranche(branche.id)  class="icon-trash bi bi-trash-fill"></i></td>
                                 </tr>
                                 <!-- Ajoutez d'autres lignes de branches ici si nécessaire -->
                             </tbody>
@@ -49,6 +49,6 @@
     <!-- MAIN -->
 </section>
 <!-- NAVBAR -->
-  
+
 
 

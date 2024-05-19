@@ -1,4 +1,4 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<!-- <div class="container" *ngIf="currentUser; else loggedOut">
 	<div>
 		<h6 class="text-muted py-5">
 			<strong>{{ currentUser.displayName }}</strong> Profile
@@ -14,5 +14,57 @@
 	<ul>
 		<li *ngFor="let role of currentUser.roles">{{ role }}</li>
 	</ul>
+</div>
+<ng-template #loggedOut> Please login. </ng-template> -->
+
+<div class="profile-container">
+	<div class="profile-card">
+		<div class="profile-image-container">
+			<!-- <img src="path_to_image.jpg" alt="Profile Image" class="profile-image"> -->
+			<img *ngIf="safeImage; else defaultIcon" class="profile-image" [src]="safeImage" alt="User Profile">
+			  <ng-template #defaultIcon>
+				<img src="../assets/img/icon_user.jpg" class="profile-image" alt="User Profile">
+			</ng-template>
+		</div>
+		<p class="user-info"><strong>Num Adhérent:</strong> {{User.num}}</p>
+		<p class="user-info"><strong>CIN:</strong> {{User.cin}}</p>
+		<a href="" routerLink="../updateImage" class="change-password">
+			<span class="change-password-text">changer la photo</span>
+			<i class="fas fa-edit"></i>
+		</a>
+	</div>
+	<div class="profile-details">
+		<div class="detail-item">
+			<span class="label">Nom:</span>
+			<span class="value">{{User.displayName}}</span>
+			<a href="updateInformations" routerLink="../updateInformations" class="edit-icon"><i class="fas fa-edit"></i></a>
+		</div>
+		<div class="detail-item">
+			<span class="label">Email:</span>
+			<span class="value">{{User.email}}</span>
+			<a href="" routerLink="../updateInformations" class="edit-icon"><i class="fas fa-edit"></i></a>
+		</div>
+		<div class="detail-item">
+			<span class="label">Adresse:</span>
+			<span class="value">{{User.address}}</span>
+			<a href="edit_address.html" routerLink="../updateInformations" class="edit-icon"><i class="fas fa-edit"></i></a>
+		</div>
+		<div class="detail-item">
+			<span class="label">Sexe:</span>
+			<span class="value">{{User.sex}}</span>
+			<a href="" routerLink="../updateInformations" class="edit-icon"><i class="fas fa-edit"></i></a>
+		</div>
+		<div class="detail-item">
+			<span class="label">Date de Naissance:</span>
+			<span class="value">{{User.birth_date | date: 'dd/MM/yyyy' }}</span>
+			<a href="edit_dob.html" routerLink="../updateInformations" class="edit-icon"><i class="fas fa-edit"></i></a>
+		</div>
+		<div class="detail-item">
+			<a href="" routerLink="../updatePassword" class="change-password">
+				<span class="change-password-text">Changer le mot de passe</span>
+				<i class="fas fa-lock change-password-icon"></i>
+			</a>
+		</div>
+	</div>
 </div>
 <ng-template #loggedOut> Please login. </ng-template>

@@ -1,0 +1,71 @@
+<!-- NAVBAR -->
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">{{title}}</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Dashboard</a></li>
+        </ul>
+
+
+        <div class="data">
+            <div class="content-data">
+                <div class="page">
+                    <div class="containerReclamation">
+                        <h1>{{title}}</h1>
+                        <form (ngSubmit)="onSubmit(produitForm)" #produitForm="ngForm">
+                            <div>
+                                <label for="nometprenom">Nom:</label>
+                                <input type="text" #nom="ngModel"  id="nom" name="nom" [(ngModel)]="produit.nom" required>
+
+                                <div class="alert-danger" *ngIf="produitForm.submitted && nom.invalid">
+                                    <div style="color: red;" *ngIf="nom.errors?.['required']">Nom est obligatoire
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="telephone">Description:</label>
+                                <input  #Description="ngModel" type="text" id="description" name="description" [(ngModel)]="produit.description"
+                                    required>
+                                    <div class="alert-danger" *ngIf="produitForm.submitted && Description.invalid">
+                                        <div style="color: red;" *ngIf="Description.errors?.['required']">Description est obligatoire
+                                        </div>
+                                    </div>
+                            </div>
+                            <div>
+                                <label for="sujet">Titre:</label>
+                                <input  #titre="ngModel" type="text" id="titre" name="titre" [(ngModel)]="produit.titre" required>
+                                <div class="alert-danger" *ngIf="produitForm.submitted && titre.invalid">
+                                    <div style="color: red;" *ngIf="titre.errors?.['required']">titre est obligatoire
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="description">Contenu :</label>
+                                <textarea  #contenu="ngModel" id="contenu" name="contenu" [(ngModel)]="produit.contenu" required></textarea>
+                                <div class="alert-danger" *ngIf="produitForm.submitted && contenu.invalid">
+                                    <div style="color: red;" *ngIf="contenu.errors?.['required']">contenu est obligatoire
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="fichier">choisir un icon produit :</label>
+                                <input type="file" id="image" name="image" (change)="onFileChange2($event)" required>
+                            </div>
+                            <div>
+                                <label for="fichier">choisir une image produit :</label>
+                                <input type="file" id="image" name="image" (change)="onFileChange($event)" required>
+                            </div>
+                            <div>
+                                <button type="submit">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</section>

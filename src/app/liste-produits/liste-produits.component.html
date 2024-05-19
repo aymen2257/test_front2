@@ -1,0 +1,58 @@
+<!-- NAVBAR -->
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">produits</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Dashboard</a></li>
+        </ul>
+
+        <div class="data">
+            <div class="content-data">
+                <div class="containerListe">
+                    <h1>Liste produits</h1>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id </th>
+                                    <th>Nom </th>
+                                    <th>titre</th>
+                                    <th>Icon</th>
+                                    <th>Image</th>
+                                    <th>modifier</th>
+                                    <th>supprimer</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let produit of produits" >
+                                    <td>{{produit.id}}</td>
+                                    <td>{{produit.nom}}</td>
+                                    <td>{{produit.titre}}</td>
+                                    <td><img [src]="getSafeIcon(produit.icon)" width="100" height="60" alt="Icon"></td>
+                                    <td><img [src]="getSafeImage(produit.image)"  width="100" height="60" alt=""></td>
+                                    <td><i  (click)=navigate(produit.id) class="icon-pencil bi bi-pencil-square"></i></td>
+                                    <td><i  (click)=deleteproduit(produit.id) class="icon-trash bi bi-trash-fill"></i>
+                                        </td>
+                                </tr>
+                                <!-- Ajoutez d'autres lignes de produits ici si nécessaire -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="payment-button">
+                        <button  (click)=navigate2()>Ajouter produit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- NAVBAR -->
+
+
+

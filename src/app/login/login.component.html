@@ -15,7 +15,7 @@
                         <label for="password">Mot de Passe</label>
                         <div class="password-input-container">
                             <input pPassword [feedback]="false" formControlName="password" [type]="passwordVisible ? 'text' : 'password'" />
-                           
+
                         </div>
                         <small *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" style="color: red;">
                            Mot de Passe est requis
@@ -24,12 +24,13 @@
                             Mot de passe doit contenir au moins 6 caractères.
                         </small>
                     </div>
-                    <button pButton type="submit" label="Envoyer"></button>
+                    <button pButton type="submit" label="Envoyer">Envoyer</button>
                     <a routerLink="../forgetPassword" class="forgot-password">Mot de Passe Oublié ?</a>
                     <div *ngIf="isLoginFailed" style="color: red;">Login échoué (email ou mot de passe erroné)</div>
                 </form>
-                
+
             </div>
         </div>
     </div>
 </section>
+

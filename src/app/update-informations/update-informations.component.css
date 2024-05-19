@@ -22,7 +22,7 @@
     flex-grow: 1;
     padding: 20px;
     background-color: #f0f0f0; /* Couleur de fond plus foncée pour le contenu */
-  
+
 }
 
 
@@ -75,7 +75,9 @@
 .page form input[type="text"],
 .page input[type="email"],
 .page form input[type="password"],
-.page input[type="file"] {
+.page input[type="file"] ,
+.page form input[type="date"],
+.page input[type="select"]{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;

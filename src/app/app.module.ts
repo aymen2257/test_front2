@@ -38,6 +38,9 @@ import { ListeProduitsComponent } from './liste-produits/liste-produits.componen
 import { ListeBranchesComponent } from './liste-branches/liste-branches.component';
 import { AddBrancheComponent } from './add-branche/add-branche.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AddProduitComponent } from './add-produit/add-produit.component';
+import { ChartComponent } from './chart/chart.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -54,7 +57,7 @@ import { ReclamtionuserComponent } from './reclamtionuser/reclamtionuser.compone
 import { PanelModule } from 'primeng/panel';
 import { ListboxModule } from 'primeng/listbox';
 
- 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +93,9 @@ import { ListboxModule } from 'primeng/listbox';
     ListeBranchesComponent,
     AddBrancheComponent,
     SidebarComponent,
-    ReclamtionuserComponent
+    ReclamtionuserComponent,
+    AddProduitComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -112,17 +117,15 @@ import { ListboxModule } from 'primeng/listbox';
     TooltipModule,
     PanelModule,
     ListboxModule,
+    ChartComponent
 
-
-
-    
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
     authInterceptorProviders,
+    provideCharts(withDefaultRegisterables())
     // provideCharts(withDefaultRegisterables())
-
   ],
   bootstrap: [AppComponent]
 })

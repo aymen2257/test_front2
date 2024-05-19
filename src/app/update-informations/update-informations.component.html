@@ -11,19 +11,43 @@
         <!-- Gestion des Informations Page -->
         <div id="gestion-informations" class="page">
             <h2>modifier vos données</h2>
-            <form>
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom">
-                <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="prenom">
-                <label for="tel">Téléphone :</label>
-                <input type="text" id="tel" name="tel">
-                <label for="adresse">Adresse :</label>
-                <input type="text" id="adresse" name="adresse">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email">
-                <button type="submit">Enregistrer</button>
-            </form>
+            <div class="containerReclamation">
+                <form (ngSubmit)="onSubmit(produitForm)" #produitForm="ngForm" >
+                    <div>
+                        <label for="nometprenom">Nom:</label>
+                        <input type="text" id="nom" name="nom"
+                            [(ngModel)]="user.displayName" required>
+                    </div>
+                    <div>
+                        <label for="telephone">email:</label>
+                        <input type="email" id="email" name="email" [(ngModel)]="user.email"
+                            required>
+                    </div>
+                    <div>
+                        <label for="sujet">address:</label>
+                        <input type="text" id="address" name="address" [(ngModel)]="user.address" required>
+                    </div>
+
+                    <div>
+                        <label for="sex">Sex :</label>
+                        <select id="sex" name="sex" [(ngModel)]="user.sex" required>
+                            <option value="">Choisissez votre sex :</option>
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="date">Date Naissance:</label>
+                        <input type="date" id="date" name="date" [(ngModel)]="user.birth_date" required>
+                    </div>
+
+
+                    <div>
+                        <button type="submit">Envoyer</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

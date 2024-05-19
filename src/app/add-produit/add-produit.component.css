@@ -2,7 +2,6 @@
 @import url('https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 * {
 	font-family: 'Open Sans', sans-serif;
@@ -386,7 +385,6 @@ main .title {
 	font-size: 28px;
 	font-weight: 600;
 	margin-bottom: 10px;
-    color: #3e8155;
 }
 
 main .breadcrumbs {
@@ -400,7 +398,7 @@ main .breadcrumbs li a {
 }
 
 main .breadcrumbs li a {
-	color: #9ebf43;
+	color:  #9ebf43;
 }
 
 main .breadcrumbs li a.active,
@@ -745,16 +743,6 @@ tr:nth-child(even) {
 	background-color: #f9f9f9;
 }
 
-.icon-pencil {
-    color: rgb(218, 218, 1);
-    font-size: 25px; /* Modifiez cette valeur pour augmenter ou diminuer la taille */
-}
-
-.icon-trash {
-    color: rgb(255, 1, 1);
-    font-size: 25px; /* Modifiez cette valeur pour augmenter ou diminuer la taille */
-}
-
 .paye {
 	color: green;
 }
@@ -828,23 +816,115 @@ tr:nth-child(even) {
 	background-color: #3e8155;
 }
 
-
-.payment-button {
-    text-align: center; /* Centrer le bouton */
-    margin-top: 20px; /* Espacement depuis la liste des contrats */
+.contact {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    text-align: center;
+    margin-top: 50px; /* Ajoutez de l'espace entre la section de contact et le header */
+    margin-bottom: 50px; /* Ajoutez de l'espace entre la section de contact et le footer */
 }
 
 
-.payment-button button {
-    padding: 10px 20px; /* Ajoutez du rembourrage au bouton */
-    background-color: #3e8155; /* Couleur de fond */
-    color: #fff; /* Couleur du texte */
-    border: none; /* Supprimez la bordure */
-    border-radius: 5px; /* Ajoutez des coins arrondis */
-    cursor: pointer; /* Curseur de type pointer */
-    transition: background-color 0.3s ease; /* Transition en douceur pour le changement de couleur de fond */
+.contact .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.payment-button button:hover {
-    background-color: #9cbd4b; /* Changement de couleur de fond au survol */
+.contact h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #32CD32 ;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between; /* Pour aligner l'image et le formulaire sur la même ligne */
+    border: 2px solid #32CD32; /* Ajouter une bordure */
+    border-radius: 10px; /* Arrondir les coins */
+    overflow: hidden; /* Pour éviter que les coins arrondis ne dépassent */
+    max-width: 1000px; /* Définir la largeur maximale du cadre */
+    width:600px;
+    margin: 0 auto; /* Pour centrer le cadre horizontalement */
+}
+
+
+.contact-image {
+    flex: 0 0 40%; /* Pour que l'image occupe 30% de la largeur */
+    display: flex; /* Pour aligner l'image au centre */
+    justify-content: center; /* Pour aligner l'image au centre */
+    align-items: center; /* Pour aligner l'image au centre */
+    overflow: hidden; /* Pour éviter que les coins arrondis ne dépassent */
+}
+
+.contact-image img {
+    width: 95%; /* Ajustez la taille de l'image selon votre préférence */
+    border-radius: 10px; /* Arrondir tous les coins */
+}
+
+.contact-form-container {
+    flex: 0 0 95%; /* Pour que le formulaire occupe 70% de la largeur */
+}
+
+.contact-form {
+    padding: 20px; /* Ajouter un remplissage au formulaire */
+}
+
+
+.contact-form {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="checkbox"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus {
+    border-color: MediumSeaGreen;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button[type="submit"] {
+    background-color: #32CD32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #068e06;
+    color: white;
 }

@@ -12,8 +12,6 @@
     bottom: 0;
     background-color: #f0f0f0;
     border-radius: 10px; /* Angles arrondis */
-
-
 }
 
 .content {
@@ -22,7 +20,7 @@
     flex-grow: 1;
     padding: 20px;
     background-color: #f0f0f0; /* Couleur de fond plus foncée pour le contenu */
-  
+
 }
 
 
@@ -45,7 +43,7 @@
     color: #333;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    
+
 }
 
 .sidebar ul li a:hover {
