@@ -1,34 +1,37 @@
-/* Header styles */
 * {
     box-sizing: border-box;
 }
 
-/* Adjust the router-outlet styles */
-router-outlet {
-    /* This will make the router-outlet take up the full height of the viewport minus the header height */
-    padding-top: 80px;
-    /* adjust this value based on your header's actual height */
-    margin-top: -80px;
-    /* to offset the padding */
-    height: calc(100vh - 80px);
-    /* Subtract the header height */
-    overflow: auto;
-    /* Add overflow to handle scrolling within the outlet */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.contact-info, .contact-links {
+    display: flex;
+    gap: 20px;
+}
+
+.contact-info span, .contact-links span {
+    white-space: nowrap;
+    font-size: 0.9rem;
 }
 
 header {
-    background-color: #3e8155;
-    padding: 20px 40px;
+    background-color: #ffffff;
+    padding: 0 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    top: 0;
-    width: 94%;
-    z-index: 1000;
-    border-radius: 0 0 20px 20px;
+    top:0;
     width: 100%;
-    left: 0;
+    z-index: 1010;
+    border-bottom: 3px solid #3e8155;
+   
 }
 
 nav {
@@ -37,31 +40,31 @@ nav {
 }
 
 nav ul {
+    padding: 0;
+    margin: 0;
     list-style-type: none;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 20px;
+    display: inline-block;
+    margin: 0 10px;
 }
-
 
 nav ul li a {
     font-family: Arial, sans-serif;
-    /* Utiliser une police spécifique */
     text-decoration: none;
-    color: white;
+    color: #3e8155;
     font-weight: bold;
-    transition: color 0.3s ease;
+    display: block;
+    line-height: 70px; /* Align text vertically */
 }
 
 nav ul li a:hover {
-    color: black;
-}
-
-.profile {
-    position: relative;
+    color: grey;
 }
 
 .profile img {
@@ -70,5 +73,3 @@ nav ul li a:hover {
     border-radius: 50%;
     cursor: pointer;
 }
-
-

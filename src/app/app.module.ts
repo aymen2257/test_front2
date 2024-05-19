@@ -11,7 +11,7 @@ import { TokenComponent } from './register/token.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule , HttpClient, provideHttpClient, withFetch} from '@angular/common/http';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
@@ -38,7 +38,21 @@ import { ListeProduitsComponent } from './liste-produits/liste-produits.componen
 import { ListeBranchesComponent } from './liste-branches/liste-branches.component';
 import { AddBrancheComponent } from './add-branche/add-branche.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { CardModule } from 'primeng/card';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { PasswordModule } from 'primeng/password';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TooltipModule } from 'primeng/tooltip';
+import { ReclamtionuserComponent } from './reclamtionuser/reclamtionuser.component';
+import { PanelModule } from 'primeng/panel';
+import { ListboxModule } from 'primeng/listbox';
 
  
 @NgModule({
@@ -75,7 +89,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     ListeProduitsComponent,
     ListeBranchesComponent,
     AddBrancheComponent,
-    SidebarComponent
+    SidebarComponent,
+    ReclamtionuserComponent
   ],
   imports: [
     BrowserModule,
@@ -83,12 +98,31 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    InputTextModule,
+    ButtonModule,
+    CheckboxModule,
+    CardModule,
+    FloatLabelModule,
+    PasswordModule,
+    TableModule,
+    DropdownModule,
+    FileUploadModule,
+    InputTextareaModule,
+    TooltipModule,
+    PanelModule,
+    ListboxModule,
+
+
+
+    
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
     authInterceptorProviders,
     // provideCharts(withDefaultRegisterables())
+
   ],
   bootstrap: [AppComponent]
 })

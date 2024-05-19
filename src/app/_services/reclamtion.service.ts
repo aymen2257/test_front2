@@ -13,6 +13,11 @@ const httpOptions = {
 export class ReclamtionService {
 
   constructor(private http:HttpClient) { }
+  getUserReclamations(): Observable<any> {
+    return this.http.get(AppConstants.API_URL + 'reclamations/my-reclamations', {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
   getAllReclamations(): Observable<any> {
     return this.http.get(AppConstants.API_URL + 'reclamations/getall', httpOptions);
   }
@@ -30,6 +35,14 @@ export class ReclamtionService {
 
     return this.http.post(AppConstants.API_URL + 'reclamations/upload', formData, {
       responseType: 'json'  // Specify that the response is expected to be in JSON format
+    });
+  }
+  updateReclamationStatus(id: number, status: any): Observable<any> {
+    return this.http.put(`${AppConstants.API_URL}reclamations/${id}/status/${status}`, {}, httpOptions);
+  }
+  downloadFile(id: number): Observable<Blob> {
+    return this.http.get(`${AppConstants.API_URL}reclamations/download/${id}`, {
+      responseType: 'blob'
     });
   }
 }

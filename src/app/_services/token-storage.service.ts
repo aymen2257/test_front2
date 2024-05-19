@@ -1,5 +1,6 @@
-import { isPlatformBrowser } from '@angular/common';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -8,15 +9,25 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class TokenStorageService {
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    // Initialize the BehaviorSubject with the user from sessionStorage
+    this.currentUserSubject = new BehaviorSubject<any>(this.getUser());
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue(): any {
+    return this.currentUserSubject.value;
+  }
 
   signOut(): void {
     if (isPlatformBrowser(this.platformId)) {
       window.sessionStorage.clear();
+      this.currentUserSubject.next(null);
     }
   }
-  
 
   public saveToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -36,6 +47,7 @@ export class TokenStorageService {
     if (isPlatformBrowser(this.platformId)) {
       window.sessionStorage.removeItem(USER_KEY);
       window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+      this.currentUserSubject.next(user);  // Emit the new user value to all subscribers
     }
   }
 
@@ -46,6 +58,6 @@ export class TokenStorageService {
         return JSON.parse(user);
       }
     }
-    return null;  // or any other appropriate value or action
+    return null;
   }
 }

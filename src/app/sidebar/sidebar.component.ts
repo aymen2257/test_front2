@@ -1,71 +1,59 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css']  // Note the correction here from 'styleUrl' to 'styleUrls'
 })
-export class SidebarComponent {
-
-  public chart : any;
-
+export class SidebarComponent implements OnInit, OnDestroy {
   content!: string;
-
-  private roles !: string[] ;
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
-  username !: string;
-  User :any
-  id:any
-  
+  username?: string;
+  userSubscription!: Subscription;
 
-  constructor(private tokenStorageService: TokenStorageService,private userService: UserService, @Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(
+    private tokenStorageService: TokenStorageService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
- 
- 
- 
   ngOnInit(): void {
-    this.userService.getAdminBoard().subscribe(
-      (data: any) => {
-        this.content = data;
-      },
-      (err: any) => {
-        this.content = JSON.parse(err.error).message;
+    // Subscribe to the currentUser observable
+    this.userSubscription = this.tokenStorageService.currentUser.subscribe(user => {
+      this.isLoggedIn = !!user;
+      if (user) {
+        this.showAdminBoard = user.roles.includes('ROLE_ADMIN');
+        this.showModeratorBoard = user.roles.includes('ROLE_MODERATOR');
+        this.username = user.displayName;
+      } else {
+        this.showAdminBoard = false;
+        this.showModeratorBoard = false;
+        this.username = undefined;
       }
+    });
+
+    // Fetch admin board or other data
+    this.userService.getAdminBoard().subscribe(
+      data => this.content = data,
+      err => this.content = JSON.parse(err.error).message
     );
-
-
-
-
-    this.isLoggedIn = !!this.tokenStorageService.getUser();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.User=user;
-      this.roles = user.roles;
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      this.username = user.displayName;
-      this.id=user.id;
-
-    }
-    /* navigate(){
-      this.router.navigate(["/contrat/"+this.id]);
-    } */
-
-
-
-        
   }
 
-
-
-  
   logout(): void {
     this.tokenStorageService.signOut();
-    window.location.reload();
+    this.router.navigate(['/login']);  // Navigate to login on logout
+  }
+
+  ngOnDestroy(): void {
+    // Clean up the subscription
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 }

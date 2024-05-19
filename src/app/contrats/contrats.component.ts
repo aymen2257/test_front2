@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { ContratService } from '../_services/contrat.service';
-
+import { loadStripe } from '@stripe/stripe-js';
 @Component({
   selector: 'app-contrats',
   templateUrl: './contrats.component.html',
@@ -37,6 +37,22 @@ export class ContratsComponent {
       }
     );
   }
+  async payForContrat(contratId: number) {
+    this.contratService.createPaymentSession(contratId).subscribe(async (sessionId: string) => {
+      if (sessionId.startsWith("Error:")) {
+        console.error("Failed to create session:", sessionId);
+        alert("Failed to create payment session. Please try again.");
+        return;
+      }
 
+      const stripe = await loadStripe('pk_test_51PG9CNLvE4Q0JCmFhoDb5P5rbPlGKjJBbvEedLa8STPVcf8svw6QzQqh5q33ao2tj0RZCqY1kJnZZrNhvPyWJ2AR00gLcrr9Qp');
+      if (stripe) {
+        stripe.redirectToCheckout({ sessionId: sessionId });
+      }
+    }, error => {
+      console.error("HTTP Error:", error);
+      alert("Failed to communicate with the server. Please try again.");
+    });
+  }
 
 }

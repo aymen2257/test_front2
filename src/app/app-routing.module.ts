@@ -26,7 +26,8 @@ import { ListeReclamationsComponent } from './liste-reclamations/liste-reclamati
 import { AddBrancheComponent } from './add-branche/add-branche.component';
 import { ListeBranchesComponent } from './liste-branches/liste-branches.component';
 import { ListeProduitsComponent } from './liste-produits/liste-produits.component';
-
+import { AuthGuard } from './_services/auth.guard';
+import { ReclamtionuserComponent } from './reclamtionuser/reclamtionuser.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
+  { path: 'admin', component: BoardAdminComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_Admin'] } },
   { path: 'totp', component: TotpComponent },
   { path: 'verify', component: TokenComponent },
   { path: 'verify2', component: VerifiyTokenComponent },
@@ -44,12 +45,12 @@ const routes: Routes = [
   { path: 'updateImage', component: UpdateImageComponent},
   { path: 'updateInformations', component: UpdateInformationsComponent},
   { path: 'updatePassword', component: UpdatePasswordComponent},
-  { path: 'contrat', component: ContratsComponent},
-  { path: 'reclamation', component: ReclamationsComponent},
+  { path: 'contrat', component: ContratsComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_USER'] }},
+  { path: 'reclamation', component: ReclamationsComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_USER'] }},
   { path: 'produit', component:UnProduitComponent },
-  {path:"contrat/:id",component:ContratsComponent},
+  {path:"contrat/:id",component:ContratsComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_USER'] }},
   {path:"agences",component:AgenceComponent},
-
+  { path: 'my-reclamations', component: ReclamtionuserComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_USER'] } },
   { path: 'listeContrats', component:ListeContratComponent },
   { path: 'listeAdherent', component:ListeUsersComponent },
   { path: 'listeReclamation', component:ListeReclamationsComponent},

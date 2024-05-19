@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:8087/',
-  clientUrl: '?redirect_uri=http://localhost:4200/login' 
+  clientUrl: '?redirect_uri=http://localhost:4200/login' ,
+  
   
   
 };

@@ -1,66 +1,55 @@
 .contact {
-    background-color: #f9f9f9;
     padding: 50px 0;
     text-align: center;
-    margin-top: 50px; /* Ajoutez de l'espace entre la section de contact et le header */
-    margin-bottom: 50px; /* Ajoutez de l'espace entre la section de contact et le footer */
+    margin-top: 50px; /* Add space between the contact section and the header */
+    margin-bottom: 50px; /* Add space between the contact section and the footer */
 }
-
 
 .contact .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.contact h2 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 36px;
-    margin-bottom: 30px;
-    color: #32CD32 ;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space items nicely */
+    align-items: stretch; /* Align items to stretch them to the same height */
+    padding: 0; /* No padding, to allow edge-to-edge alignment of children */
+    margin: 0 auto; /* Keep the container centered */
+    width: 100%; /* Full width to stretch across */
 }
 
 .contact-container {
     display: flex;
-    justify-content: space-between; /* Pour aligner l'image et le formulaire sur la même ligne */
-    border: 2px solid #32CD32; /* Ajouter une bordure */
-    border-radius: 10px; /* Arrondir les coins */
-    overflow: hidden; /* Pour éviter que les coins arrondis ne dépassent */
-    max-width: 1000px; /* Définir la largeur maximale du cadre */
-    width:980px;
-    margin: 0 auto; /* Pour centrer le cadre horizontalement */
+    justify-content: space-between; /* Align to the start, so the message sticks to the left */
+    align-items: stretch; /* Align items to stretch them to the same height */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-direction:row; /* Ensure the internal container takes full width */
 }
 
-
-.contact-image {
-    flex: 0 0 40%; /* Pour que l'image occupe 30% de la largeur */
-    display: flex; /* Pour aligner l'image au centre */
-    justify-content: center; /* Pour aligner l'image au centre */
-    align-items: center; /* Pour aligner l'image au centre */
-    overflow: hidden; /* Pour éviter que les coins arrondis ne dépassent */
-}
-
-.contact-image img {
-    width: 95%; /* Ajustez la taille de l'image selon votre préférence */
-    border-radius: 10px; /* Arrondir tous les coins */
+.welcome-message-container {
+    flex-basis: 40%; /* Adjusted to take up 30% of the space */
+    background-color: #3e8155;
+    color: #ffffff;
+    padding: 20px;
+    margin-right: 20px; /* Add some margin between message and form */
+    text-align: left;
 }
 
 .contact-form-container {
-    flex: 0 0 60%; /* Pour que le formulaire occupe 70% de la largeur */
+    flex-basis: 70%; /* Adjusted to take up remaining space, about 70% */
+    padding: 20px;
+    background: #ffffff; /* Background color for the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: Adds depth to the form */
+}
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #0d460d;
 }
 
-.contact-form {
-    padding: 20px; /* Ajouter un remplissage au formulaire */
-}
-
-
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
+/* Rest of your styles for form elements */
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: left;
 }
 
@@ -70,24 +59,22 @@
     font-weight: bold;
 }
 
+/* Ensure that form elements take full width */
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="password"],
 .form-group input[type="number"],
 .form-group input[type="checkbox"],
-.form-group textarea {
-    width:90%;
-    padding: 10px;
+.form-group textarea,
+.p-password .p-inputtext {
+    width: 100%;
+    padding: 12px;
     border-radius: 5px;
     border: 1px solid #ccc;
     transition: border-color 0.3s ease;
 }
 
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group input[type="password"]:focus,
-.form-group input[type="number"]:focus,
-.form-group input[type="checkbox"]:focus,
+/* Focus styles */
+.form-group input:focus,
 .form-group textarea:focus {
     border-color: MediumSeaGreen;
     outline: none;
@@ -98,17 +85,20 @@
     min-height: 100px;
 }
 
-button[type="submit"] {
-    background-color: #32CD32;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.p-floatLabel {
+    display: block;
+    margin-bottom: .5rem;
+}
+.success-message-container {
+    text-align: center;
+    margin-top: 20px; /* Adjust as needed */
+    padding: 15px;
+    background-color: #e9fbe9; /* Light green background for success */
+    color: #37a037; /* Darker green text for better readability */
+    margin: 50px; /* Remove default paragraph margin */
+    padding: 20px
+    
 }
 
-button[type="submit"]:hover {
-    background-color: #068e06;
-    color: white;
-}
+
+

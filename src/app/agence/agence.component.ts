@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AfterViewInit, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 import { AgenceService } from '../_services/agence.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -17,6 +17,7 @@ export class AgenceComponent implements AfterViewInit, OnInit {
   public governorates: string[] = [];
   public selectedGovernorate!: string;
   public agencies: any[] = [];
+  public nearestAgency: any; // Property to store the nearest agency
 
   constructor(
     private http: HttpClient,
@@ -57,45 +58,69 @@ export class AgenceComponent implements AfterViewInit, OnInit {
     });
   }
 
-  private geocodeAddress(address: string): Observable<any> {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&addressdetails=1`;
-    const headers = new HttpHeaders({
-        'User-Agent': 'MyWebApplication/<>'
-    });
-
-    return this.http.get<any[]>(url, { headers }).pipe(
-        map((response: any[]) => {
-         
-                console.log(`Geocoding success for address "${address}":`, response[0]);
-                return { lat: response[0].lat, lon: response[0].lon };
-             
-        }),
-        catchError(error => {
-            console.error(`Geocoding error for address "${address}":`, error);
-            return of(undefined); // Returning undefined to handle it gracefully in the subscriber
-        })
-    );
-}
-
-
-
-private updateMap(): void {
-  if (this.isBrowser && this.map) {
+  private updateMap(): void {
     this.agencies.forEach(agence => {
       this.geocodeAddress(agence.address).subscribe(coords => {
-        if (coords && coords.lat !== undefined && coords.lon !== undefined) { // Ensure both lat and lon are defined
+        if (coords && typeof coords.lat !== 'undefined' && typeof coords.lon !== 'undefined') {
           const marker = this.L.marker([coords.lat, coords.lon])
             .bindPopup(`<b>${agence.name}</b><br>${agence.address}`);
           marker.addTo(this.map);
         } else {
-          console.error(`Failed to add marker for agency "${agence.name}" due to invalid coordinates: Latitude and Longitude are undefined.`);
-          // Optionally, provide feedback to the user or log this information
+          console.error(`Failed to add marker for agency "${agence.name}" due to invalid coordinates.`);
         }
       });
     });
   }
-}
 
+  findNearestAgency(): void {
+    navigator.geolocation.getCurrentPosition(position => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      console.log(lat);
+      console.log(lon);
+      console.log(position);
+      this.agenceService.getNearestAgence(lat, lon).subscribe(agency => {
+        this.nearestAgency = agency;
+        if (agency) {
+          this.L.marker([agency.latitude, agency.longitude])
+            .bindPopup(`<b>${agency.name}</b><br>${agency.address}`)
+            .addTo(this.map)
+            .openPopup();
+          this.map.setView([agency.latitude, agency.longitude], 14);
+        }
+      }, error => {
+        console.error('Error fetching nearest agency:', error);
+        alert('Failed to fetch the nearest agency. Please check your network connection and try again.');
+      });
+    }, error => {
+      console.error('Geolocation not supported or permission denied:', error);
+      alert('Geolocation is not supported by your device or the permission was denied.');
+    });
+  }
 
+  private geocodeAddress(address: string): Observable<any> {
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&addressdetails=1`;
+    const headers = new HttpHeaders({
+        'User-Agent': 'MyWebApplication/<App-Version>'
+    });
 
+    return this.http.get<any[]>(url, { headers }).pipe(
+        retry(3),
+        map((response: any[]) => {
+            if (response.length > 0 && response[0].lat && response[0].lon) {
+              console.log(response[0].lat);
+              console.log(response[0].lon);
+                return { lat: response[0].lat, lon: response[0].lon };
+               
+            } else {
+                console.error(`Geocoding failed or returned no results for address "${address}".`);
+                return undefined;
+            }
+        }),
+        catchError(error => {
+            console.error(`Geocoding error for address "${address}":`, error);
+            return of(undefined);
+        })
+    );
+  }
 }

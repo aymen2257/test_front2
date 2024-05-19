@@ -1,0 +1,25 @@
+<div>
+    <h2>Your Reclamations</h2>
+    <div *ngIf="reclamations && reclamations.length > 0; else noData">
+      <p-card *ngFor="let reclamation of reclamations" [style]="{'margin-bottom': '20px'}">
+        <ng-template pTemplate="header">
+          <div class="p-d-flex p-jc-between">
+            <div>{{ reclamation.sujet }}</div>
+            <div>Status: <strong>{{ reclamation.status }}</strong></div>
+          </div>
+        </ng-template>
+        <div class="p-d-flex p-flex-column" style="line-height: 1.5">
+          <div><strong>ID:</strong> {{ reclamation.id }}</div>
+          <div><strong>User ID:</strong> {{ reclamation.user.id }}</div>
+          <div><strong>Description:</strong> {{ reclamation.description }}</div>
+        </div>
+        <ng-template pTemplate="footer">
+          <p-button label="More Details" ></p-button>
+        </ng-template>
+      </p-card>
+    </div>
+    <ng-template #noData>
+      <p>No reclamations to display.</p>
+    </ng-template>
+  </div>
+  

@@ -1,1 +1,44 @@
-<p>liste-reclamations works!</p>
+<main>
+    <h1 class="title">Dashboard</h1>
+    <ul class="breadcrumbs">
+      <li><a href="/reclamation">reclamations</a></li>
+      <li class="divider">/</li>
+      <li><a href="#" class="active">Dashboard</a></li>
+    </ul>
+  
+    <div class="data">
+      <div class="content-data">
+        <div class="containerListe">
+          <h1>Liste reclamations</h1>
+          <p-table [value]="reclamations" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-reclamation>
+              <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.telephone }}</td>
+                <td>{{ reclamation.categorie }}</td>
+                <td>{{ reclamation.sujet }}</td>
+                <td>{{ reclamation.status }}</td>
+                <td>
+                  <button pButton type="button" icon="pi pi-check" (click)="updateStatus(reclamation.id, 'APPROVED')" tooltip="Approve"></button>
+                  <button pButton type="button" icon="pi pi-times" (click)="updateStatus(reclamation.id, 'DENIED')" tooltip="Deny"></button>
+                  <button pButton type="button" icon="pi pi-clock" (click)="updateStatus(reclamation.id, 'PENDING')" tooltip="Set as Pending"></button>
+                  <button pButton type="button" icon="pi pi-download" (click)="downloadFile(reclamation.id)" tooltip="Download File"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </main>
+  

@@ -2,11 +2,11 @@ import { Component, OnInit, ElementRef, ViewChild, HostListener , AfterViewInit,
 import { UserService } from '../_services/user.service';
 import { isPlatformBrowser } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
-import { Chart, ChartOptions } from 'chart.js';
+
 import { TokenStorageService } from '../_services/token-storage.service';
 import { ITypePercentage } from '../interface/count.interface';
 import { ContratService } from '../_services/contrat.service';
-
+import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 
 
 
@@ -30,7 +30,9 @@ export class BoardAdminComponent implements OnInit {
   contrats:any
 
   constructor(private userService: UserService,private contratService:ContratService) { }
-
+  public doughnutChartLabels: string[] = [];
+  public doughnutChartData: ChartDataset[] = [{ data: [] }];
+  public doughnutChartType: ChartType = 'doughnut';
     //doughnutChartData: any[] = [];
     //doughnutChartLabels : any[] = [];
   ngOnInit(): void {
@@ -82,15 +84,30 @@ export class BoardAdminComponent implements OnInit {
       (error) => {
         console.error(error);
       }
+      
     )
+    this.contratService.getTypePercentage().subscribe(data => {
+      this.doughnutChartLabels = data.map(item => item.branche.libelleBranche);
+      this.doughnutChartData[0].data = data.map(item => item.count);
+    });
+  
   
 
    /*  this.createdoChart(this.doughnutChartLabels,this.doughnutChartData,'doughnut','dochart');
-    this.createChart('mychart','line');*/
-    this.createChart('mychart','bar'); 
+    this.createChart('mychart','line');
+    this.createChart('mychart','bar'); */
 
 }
-   createChart(title:any,type:any){
+    
+
+
+
+
+
+
+
+
+/*createChart(title:any,type:any){
   
     this.chart = new Chart(title, {
       type: type, //this denotes tha type of chart
@@ -120,7 +137,7 @@ export class BoardAdminComponent implements OnInit {
     });
   } 
 
-  /* createdoChart(labeldata:any,maindata:any,type:any,title:any){
+  createdoChart(labeldata:any,maindata:any,type:any,title:any){
   
     this.chart = new Chart(title, {
       type: type, //this denotes tha type of chart

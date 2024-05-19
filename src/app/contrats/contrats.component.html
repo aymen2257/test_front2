@@ -39,6 +39,9 @@
                                 <td>
                                     {{ contrat.paye ? 'payé' : 'non payé' }}
                                 </td>
+                                <td>
+                                    <button *ngIf="!contrat.paye" (click)="payForContrat(contrat.id)">Pay</button>
+                                  </td>
                             </tr>
 
 

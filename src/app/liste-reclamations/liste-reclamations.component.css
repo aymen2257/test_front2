@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css');
+
+* {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--grey: #F1F0F6;
+	--dark-grey: #8D8D8D;
+	--light: #fff;
+	--dark: #000;
+	
+	--light-green: #E3FFCB;
+	--blue: #1775F1;
+	--light-blue: #D0E4FF;
+	--dark-blue: #0C5FCD;
+	--red: #FC3B56;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	background: var(--grey);
+	overflow-x: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+
+
+
+
+
+
+/* SIDEBAR */
+
+
+
+
+
+/* CONTENT */
+#content {
+	position: relative;
+	width: calc(100% - 260px);
+	left: 260px;
+	transition: all .3s ease;
+}
+
+#sidebar.hide+#content {
+	width: calc(100% - 60px);
+	left: 60px;
+}
+
+
+/* NAVBAR */
+
+
+
+
+/* MAIN */
+/* CONTENT */
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	#content {
+		position: relative;
+		width: calc(100% - 60px);
+		transition: all .3s ease;
+	}
+
+	nav .nav-link,
+	nav .divider {
+		display: none;
+	}
+}
+
+
+.containerListe h1 {
+	text-align: center;
+	margin-top: 30px;
+	color: #333;
+}
+
+.containerListe {
+	text-align: left;
+	font-family: Arial, sans-serif;
+	max-width: 800px;
+	margin: auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th,
+td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	font-size: 16px;
+	/* Changer la taille du texte des titres de colonnes */
+
+}
+
+th {
+	background-color: #f2f2f2;
+	color: #333;
+	font-size: 16px;
+	/* Changer la taille du texte des titres de colonnes */
+
+}
+
+.table-responsive {
+	overflow-x: auto;
+}
+
+tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+
+
+
+.containerReclamation {
+	max-width: 600px;
+	margin: auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.containerReclamation h1 {
+	text-align: center;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+
+
+

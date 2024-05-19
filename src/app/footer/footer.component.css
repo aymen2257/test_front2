@@ -1,127 +1,96 @@
-/* Footer styles */
-
 footer {
-    background-color: #9ebf43;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
-    bottom:0;
-    width: 100%;
-    z-index: 1000;
-    border-radius: 20px 20px 0 0;
+    background-color: #3e8155; /* Dark green background */
+    color: #ffffff; /* White text for readability */
+    padding: 60px 0; /* More padding for a larger footer */
+    font-family: Arial, sans-serif; /* Consistent font family */
+    max-width: 100%;
 }
 
 footer .container {
     display: flex;
+    justify-content: space-around; /* Adjusted for better spacing */
+    align-items: start;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+    margin: auto;
 }
 
-.footer-links {
-    text-align: left;
+.footer-links, .footer-info, .email-subscribe, .social-media {
+    margin: 0 20px; /* Increased spacing between columns */
+    flex: 1;
+    min-width: 200px; /* Adjusted minimum width */
 }
 
-.footer-links ul {
+.footer-links ul, .footer-info, .email-subscribe form, .social-media {
     list-style: none;
     padding: 0;
+    margin: 0 0 20px;
+    text-align: center; /* Center align text */
 }
 
-.footer-links ul li {
+.footer-links ul li, .footer-info p, .social-media a {
     margin-bottom: 10px;
+    color: #fff;
 }
 
-.footer-links ul li a {
-    color: #333;
+.footer-links ul li a, .social-media a {
     text-decoration: none;
-    /* Supprimer les soulignements sous les liens */
+    color: #fff;
+    transition: color 0.3s ease;
 }
 
-
-.footer-info {
-    text-align: left;
-    /* Aligner le texte à gauche */
+.footer-links ul li a:hover, .social-media a:hover {
+    color: #9cbd4b;
 }
 
-.footer-info p {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #333;
-    margin: 0;
-    /* Supprimer les marges par défaut */
-    line-height: 1.6;
-    /* Espacement des lignes */
-}
-
-
-
-.footer-info p i {
-    margin-right: 8px;
-    /* Espacement entre l'icône et le texte */
-    font-size: 20px;
-    /* Taille de l'icône */
-    vertical-align: middle;
-    /* Aligner l'icône verticalement */
-    color: #333;
-    /* Changer la couleur de l'icône */
-}
-
-
-.email-subscribe {
-    margin-top: 20px;
+.email-subscribe form {
     display: flex;
-    /* Utiliser flexbox */
-    align-items: center;
-    /* Aligner les éléments verticalement au centre */
+    justify-content: center; /* Centered form */
 }
 
-.email-subscribe .email-input {
-    flex: 1;
-    /* Le champ email prendra autant d'espace que possible */
+.email-input {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-    /* Ajouter un espace entre l'input et le bouton */
-}
-
-.email-subscribe .button-submit {
-    background-color: black;
-    color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-
-.social-media {
-    margin-top: 20px;
-}
-
-.social-media a {
-    color: rgb(0, 0, 0);
     margin-right: 10px;
 }
 
 button {
-    background-color:white;
-    color:MediumSeaGreen;
-    font-weight: bold;
+    background-color: #9cbd4b;
+    color: #222;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color:#9cbd4b;
+    background-color: #88a83e;
     color: white;
 }
-/* Body styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: white;
+
+.social-media a i {
+    font-size: 20px;
+    margin-right: 10px; /* Added spacing to the right of icons */
+}
+
+@media (max-width: 768px) {
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links, .footer-info, .email-subscribe, .social-media {
+        flex: none;
+        max-width: 300px;
+        margin: 10px 0;
+    }
+
+    .email-subscribe form {
+        flex-direction: column;
+    }
+
+    .email-input {
+        margin: 0 0 10px 0;
+    }
 }

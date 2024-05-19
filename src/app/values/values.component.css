@@ -11,7 +11,7 @@
 
 body {
     --color: rgba(30, 30, 30);
-    --bgColor: rgba(245, 245, 245);
+    /*--bgColor: rgba(245, 245, 245);*/
     min-height: 100vh;
     display: grid;
     align-content: center;
@@ -19,7 +19,7 @@ body {
     padding: 2rem;
     font-family: "Exo 2", sans-serif;
     color: var(--color);
-    background: var(--bgColor);
+   
 }
 
 h1 {
@@ -50,7 +50,7 @@ h2 {
 ol {
     
     --color: rgba(30, 30, 30);
-    --bgColor: rgba(245, 245, 245);
+   /* --bgColor: rgba(245, 245, 245);*/
     /* ol style*/
     width: min(60rem, 90%);
     margin-inline: auto;

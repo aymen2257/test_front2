@@ -29,4 +29,7 @@ export class ContratService {
       .get<Array<ITypePercentage>>(AppConstants.CONTRAT_URL+"PercentageByBranche", httpOptions)
       .pipe(map((d: Array<ITypePercentage>) => d));
   }
+  createPaymentSession(contratId: number): Observable<string> {
+    return this.http.post<string>(AppConstants.CONTRAT_URL + `pay/${contratId}`, {}, { responseType: 'text' as 'json' });
+  }
 }

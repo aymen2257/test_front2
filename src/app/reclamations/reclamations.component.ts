@@ -1,22 +1,29 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ReclamtionService } from '../_services/reclamtion.service';
+import Swal from 'sweetalert2';  // Import SweetAlert2
 
 @Component({
   selector: 'app-reclamations',
   templateUrl: './reclamations.component.html',
   styleUrls: ['./reclamations.component.css']
 })
-export class ReclamationsComponent {
-  reclamation: any = {};
+export class ReclamationsComponent implements OnInit {
+  reclamationForm!: FormGroup;
   currentFile: File | null = null;
-  id:any;
 
-  constructor(private tokenStorageService: TokenStorageService, private reclamationService: ReclamtionService) { }
+  constructor(private fb: FormBuilder, private reclamationService: ReclamtionService) { }
 
   ngOnInit(): void {
-    // Initialization logic can be placed here
+    this.reclamationForm = this.fb.group({
+      nomprenom: ['', Validators.required],
+      telephone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      categorie: ['', Validators.required],
+      sujet: ['', Validators.required],
+      description: ['', Validators.required],
+      fichier: [null]
+    });
   }
 
   onFileChange(event: Event): void {
@@ -24,29 +31,34 @@ export class ReclamationsComponent {
     let fileList: FileList | null = element.files;
     if (fileList) {
       this.currentFile = fileList[0];
+      this.reclamationForm.patchValue({ fichier: fileList[0] });
     } else {
       this.currentFile = null;
     }
   }
 
-  onSubmit(form: NgForm): void {
-    if (!form.valid) {
-      alert('Please fill all required fields.');
+  onSubmit(): void {
+    if (!this.reclamationForm.valid) {
+      Swal.fire('Error', 'Please fill all required fields.', 'error');
       return;
     }
-    if (this.currentFile) {
-      this.reclamationService.saveReclamation(this.reclamation, this.currentFile).subscribe({
-        next: response => {
-          console.log('Reclamation submitted successfully', response);
-          alert('Reclamation submitted successfully');
-        },
-        error: error => {
-          console.error('Failed to submit reclamation', error);
-          alert('Failed to submit reclamation: ' + error.message);
-        }
-      });
-    } else {
-      alert('Please attach a file.');
+    if (!this.currentFile) {
+      Swal.fire('Attention', 'Please attach a file.', 'warning');
+      return;
     }
+    this.reclamationService.saveReclamation(this.reclamationForm.value, this.currentFile).subscribe({
+      next: (response) => {
+        Swal.fire('Success', 'Reclamation submitted successfully', 'success')
+          .then((result) => {
+            if (result.isConfirmed) {
+              this.reclamationForm.reset();  // Reset form after successful submission
+              this.currentFile = null;      // Also clear the file variable
+            }
+          });
+      },
+      error: (error) => {
+        Swal.fire('Error', 'Failed to submit reclamation: ' + error.message, 'error');
+      }
+    });
   }
 }
