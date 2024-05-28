@@ -1,36 +1,37 @@
 <section class="contact">
-    <div class="container">
-        <div class="contact-container">
-            <div class="contact-form-container">
-                <h4>Veuillez entrer Votre Numero d'adhérent et Mot de passe</h4>
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!isLoggedIn">
-                    <div class="form-group">
-                        <label for="num">Num adherent</label>
-                        <input type="text" pInputText formControlName="num"/>
-                        <small *ngIf="loginForm.get('num')?.errors?.['required'] && loginForm.get('num')?.touched" style="color: red;">
-                            Num adherent est requis
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Mot de Passe</label>
-                        <div class="password-input-container">
-                            <input pPassword [feedback]="false" formControlName="password" [type]="passwordVisible ? 'text' : 'password'" />
-
-                        </div>
-                        <small *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" style="color: red;">
-                           Mot de Passe est requis
-                        </small>
-                        <small *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched" style="color: red;">
-                            Mot de passe doit contenir au moins 6 caractères.
-                        </small>
-                    </div>
-                    <button pButton type="submit" label="Envoyer">Envoyer</button>
-                    <a routerLink="../forgetPassword" class="forgot-password">Mot de Passe Oublié ?</a>
-                    <div *ngIf="isLoginFailed" style="color: red;">Login échoué (email ou mot de passe erroné)</div>
-                </form>
-
+  <div class="container">
+    <div class="contact-container">
+      <div class="contact-form-container">
+        <h4>Veuillez entrer Votre Numero d'adhérent et Mot de passe</h4>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!isLoggedIn">
+          <div class="form-group">
+            <label for="num">Num adherent</label>
+            <input type="text" pInputText formControlName="num"/>
+            <small *ngIf="loginForm.get('num')?.errors?.['required'] && loginForm.get('num')?.touched" class="error-message">
+              Num adherent est requis
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de Passe</label>
+            <div class="password-input-container">
+              <input formControlName="password" [type]="passwordVisible ? 'text' : 'password'" />
             </div>
-        </div>
+            <small *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" class="error-message">
+              Mot de Passe est requis
+            </small>
+            <small *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched" class="error-message">
+              Mot de passe doit contenir au moins 6 caractères.
+            </small>
+          </div>
+          <div class="form-group">
+            <!-- reCAPTCHA v2 checkbox -->
+            <div class="g-recaptcha" [attr.data-sitekey]="recaptchaKey"></div>
+          </div>
+          <button pButton type="submit" label="Envoyer"></button>
+          <a routerLink="../forgetPassword" class="forgot-password">Mot de Passe Oublié ?</a>
+          <div *ngIf="isLoginFailed" style="color: red;">Login échoué (email ou mot de passe erroné)</div>
+        </form>
+      </div>
     </div>
+  </div>
 </section>
-

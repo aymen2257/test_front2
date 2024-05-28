@@ -1,76 +1,35 @@
 <div class="container-sidebar">
+  <div class="sidebar" [class.collapsed]="isSidebarCollapsed" id="sidebar">
+    <ul>
+      <li><a href="/contrat" routerLink="/contrat/{{id}}">Mes contrats</a></li>
+      <li><a href="/reclamation" routerLink="/reclamation">Reclamation</a></li>
+    </ul>
+  </div>
 
-    <div class="sidebar">
-        <ul>
-            <li><a href="/contrat" routerLink="/contrat/{{id}}">mes contrats</a></li>
-            <li><a href="/reclamation" routerLink="/reclamation">Reclamation</a></li>
-        </ul>
-    </div>
-
-    <div class="content">
-        <div class="page">
-            <div class="containerListe">
-                <h1>Mes Contrats</h1>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Num Contrat</th>
-                                <th>Code Branche</th>
-                                <th>Libelle Branche</th>
-                                <th>Date d'effet</th>
-                                <th>Date fin d'effet</th>
-                                <th>Prix</th>
-                                <th>Date de paiement</th>
-                                <th>Référencement</th>
-                                <th>Statut de paiement</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let contrat of contrats">
-                                <td>{{contrat.numContrat}}</td>
-                                <td>{{contrat.branche.codeBranche}}</td>
-                                <td>{{contrat.branche.libelleBranche}}</td>
-                                <td>{{contrat.date_effet}}</td>
-                                <td>{{contrat.date_fin_effet}}</td>
-                                <td>{{contrat.prix}}</td>
-                                <td>{{contrat.date_paiement}}</td>
-                                <td>{{contrat.referencement}}</td>
-                                <td>
-                                    {{ contrat.paye ? 'payé' : 'non payé' }}
-                                </td>
-                                <td>
-                                    <button *ngIf="!contrat.paye" (click)="payForContrat(contrat.id)">Pay</button>
-                                  </td>
-                            </tr>
-
-
-
-                            <!-- Ajoutez d'autres lignes de contrats ici si nécessaire -->
-                        </tbody>
-                    </table>
-                </div>
+  <div class="content" [class.collapsed]="isSidebarCollapsed">
+    <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+    <div class="page">
+      <div class="containerListe">
+        <h1>Mes Contrats</h1>
+        <div class="card-container">
+          <div class="card" *ngFor="let contrat of contrats">
+            <div class="card-header">{{ contrat.branche.libelleBranche }}</div>
+            <div class="card-body">
+              <p><strong>Date d'effet:</strong> {{ contrat.date_effet | date: 'short' }}</p>
+              <p><strong>Date fin d'effet:</strong> {{ contrat.date_fin_effet | date: 'short' }}</p>
+              <p><strong>Prix:</strong> {{ contrat.prix }}</p>
+              <p><strong>Date de paiement:</strong> {{ contrat.date_paiement | date: 'short' }}</p>
+              <p><strong>Référencement:</strong> {{ contrat.referencement }}</p>
+              <p><strong>Statut de paiement:</strong> <span [class.paye]="contrat.paye" [class.non-paye]="!contrat.paye">{{ contrat.paye ? 'payé' : 'non payé' }}</span></p>
+              <div class="card-actions">
+                <button *ngIf="!isExpired(contrat.date_fin_effet) && !contrat.paye" (click)="payForContrat(contrat.id)">Pay</button>
+                <button *ngIf="needsRenewal(contrat)" (click)="renewContract(contrat.id)">Renew</button>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
-
-<!-- <tr>
-                            <td>Automobile</td>
-                            <td>12/10/2024</td>
-                            <td>15/11/2025</td>
-                            <td>1500</td>
-                            <td>10/10/2024</td>
-                            <td>ABC123</td>
-                            <td class="non-paye">Non</td>
-                        </tr>
-                        <tr>
-                            <td>Darek</td>
-                            <td>18/9/2024</td>
-                            <td>22/12/2025</td>
-                            <td>2500</td>
-                            <td>17/9/2024</td>
-                            <td>ABD999</td>
-                            <td class="paye">Payé</td>
-                        </tr> -->

@@ -43,15 +43,11 @@
     </nav>
     <!-- Profile image visible to all logged-in users -->
     <div *ngIf="isLoggedIn" class="profile">
-      <a href="/profile" routerLink="profile">
-        <img *ngIf="safeImage; else defaultIcon" [src]="safeImage" alt="User Profile">
-        <ng-template #defaultIcon>
-          <img src="../assets/img/icon_user.jpg" alt="User Profile">
-        </ng-template>
-      </a>
+        <a href="/updateImage" routerLink="updateImage">
+            <img src="../assets/img/icon_user.jpg" alt="User Profile">
+        </a>
     </div>
 </header>
-
 
 <router-outlet></router-outlet>
 

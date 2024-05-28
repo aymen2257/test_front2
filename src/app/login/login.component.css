@@ -57,13 +57,12 @@
     transform: translateY(-50%); /* Center vertically */
     cursor: pointer;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
-
-
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -96,11 +95,12 @@ button[type="submit"]:hover {
 }
 
 .contact h4 {
-   margin-bottom: 40px;
+    margin-bottom: 40px;
     text-align: left;
     color: green; /* Changes the color to green */
     padding-left: 0px; /* Adds spacing to the left */
 }
+
 .error-message {
     color: red;
     font-size: 0.875rem; /* Adjust the font size as needed */
@@ -110,4 +110,14 @@ button[type="submit"]:hover {
     bottom: -20px; /* Position below the input */
     left: 0; /* Align to the left */
     width: 100%; /* Ensure the width matches the input */
+}
+
+/* New styles for the reCAPTCHA component */
+.recaptcha-container {
+    margin-top: 20px; /* Add some space above the reCAPTCHA */
+    text-align: center; /* Center align the reCAPTCHA */
+}
+
+.recaptcha-container > div {
+    display: inline-block; /* Ensures the reCAPTCHA is centered */
 }

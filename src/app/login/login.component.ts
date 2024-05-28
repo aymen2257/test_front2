@@ -4,8 +4,11 @@ import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
-import { AppConstants } from '../common/app.constants';
-import Swal from 'sweetalert2';  // Import SweetAlert2
+import Swal from 'sweetalert2';
+import { environment } from '../../environments/environment';
+
+declare var grecaptcha: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,6 +21,8 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   currentUser: any;
   passwordVisible: boolean = false;
+  recaptchaKey = environment.recaptchaKey || '';
+  recaptchaToken: string | undefined;
 
   constructor(
     private authService: AuthService,
@@ -55,35 +60,52 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  togglePasswordVisibility(): void {
-    this.passwordVisible = !this.passwordVisible;
-  }
-
   onSubmit(): void {
+    const recaptchaResponse = grecaptcha.getResponse();
+console.log(recaptchaResponse);
+    if (!recaptchaResponse) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Attention',
+        text: 'Veuillez compléter le CAPTCHA.',
+        confirmButtonColor: '#ffc107'
+      });
+      return;
+    }
+
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(
+      const loginData = {
+        num: this.loginForm.value.num,
+        password: this.loginForm.value.password,
+        recaptchaResponse: recaptchaResponse
+      };
+      this.authService.login(loginData).subscribe(
         data => {
           this.tokenStorage.saveToken(data.accessToken);
           if (data.authenticated) {
-            console.log("Connexion réussie");
-            
             this.login(data.user);
           } else {
-            console.log("Connexion réussie, étape 2");
             this.router.navigate(['/totp']);
           }
         },
         err => {
-          console.log("Un problème est survenu lors de la connexion");
           this.errorMessage = err.error.message;
           this.isLoginFailed = true;
-          console.log(this.errorMessage);
-          Swal.fire({
-            icon: 'error',
-            title: 'Erreur de connexion',
-            text: 'Numéro adhérent ou mot de passe incorrect.',
-            confirmButtonColor: '#dc3545'
-          });
+          if (err.status === 403 && err.error.message === "ReCAPTCHA validation failed.") {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur de reCAPTCHA',
+              text: 'ReCAPTCHA validation failed. Please try again.',
+              confirmButtonColor: '#dc3545'
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erreur de connexion',
+              text: 'Numéro adhérent ou mot de passe incorrect.',
+              confirmButtonColor: '#dc3545'
+            });
+          }
         }
       );
     } else {
@@ -103,7 +125,6 @@ export class LoginComponent implements OnInit {
     this.isLoggedIn = true;
     this.currentUser = this.tokenStorage.getUser();
 
-    // Role-based redirection
     if (this.currentUser.roles.includes("ROLE_ADMIN")) {
       this.router.navigate(['/admin']).then(() => {
         Swal.fire({
@@ -113,7 +134,7 @@ export class LoginComponent implements OnInit {
           confirmButtonColor: '#28a745'
         });
       });
-    } else   {
+    } else {
       this.router.navigate(['/home']).then(() => {
         Swal.fire({
           icon: 'success',
@@ -124,5 +145,4 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-  
 }

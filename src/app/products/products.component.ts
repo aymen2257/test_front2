@@ -26,9 +26,9 @@ export class ProductsComponent {
     this.produitService.getAllProduits().subscribe(
       data => {
         console.log("this is data :" + data);
-        console.log(data);
+     
         this.produits = data;
-        console.log("produit:" + this.produits);
+       
 
       },
       err => {

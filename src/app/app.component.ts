@@ -38,8 +38,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
         this.username = user.displayName;
         this.id = user.id;
+        this.userStorage = this.tokenStorageService.getUser();
+        this.getUserById();
       } else {
-        // Reset view state when logged out
+        
         this.roles = [];
         this.showAdminBoard = false;
         this.showModeratorBoard = false;
@@ -47,8 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.id = undefined;
       }
     });
-    this.userStorage = this.tokenStorageService.getUser();
-    this.getUserById();
+   
   }
 
   getSafeImage(image: string | null): SafeUrl | null {

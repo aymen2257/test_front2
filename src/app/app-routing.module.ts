@@ -31,6 +31,7 @@ import { ChartComponent } from './chart/chart.component';
 
 import { AuthGuard } from './_services/auth.guard';
 import { ReclamtionuserComponent } from './reclamtionuser/reclamtionuser.component';
+import { SuccessComponent } from './success/success.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_Admin'] } },
+  { path: 'admin', component: BoardAdminComponent,canActivate: [AuthGuard], data: { requiredRoles: ['ROLE_ADMIN'] } },
   { path: 'totp', component: TotpComponent },
   { path: 'verify', component: TokenComponent },
   { path: 'verify2', component: VerifiyTokenComponent },
@@ -67,6 +68,8 @@ const routes: Routes = [
   { path: 'add-produit', component:AddProduitComponent},
   { path: 'add-produit/:id', component:AddProduitComponent},
   { path: 'chart', component:ChartComponent},
+  { path: 'success', component: SuccessComponent },
+  { path: 'cancel', component: SuccessComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

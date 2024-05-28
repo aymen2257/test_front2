@@ -56,6 +56,8 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ReclamtionuserComponent } from './reclamtionuser/reclamtionuser.component';
 import { PanelModule } from 'primeng/panel';
 import { ListboxModule } from 'primeng/listbox';
+import { SuccessComponent } from './success/success.component';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -95,6 +97,7 @@ import { ListboxModule } from 'primeng/listbox';
     SidebarComponent,
     ReclamtionuserComponent,
     AddProduitComponent,
+    SuccessComponent,
 
   ],
   imports: [
@@ -117,15 +120,19 @@ import { ListboxModule } from 'primeng/listbox';
     TooltipModule,
     PanelModule,
     ListboxModule,
-    ChartComponent
+    ChartComponent,
+    RecaptchaModule,
+    RecaptchaFormsModule
+  
+   
 
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
     authInterceptorProviders,
-    provideCharts(withDefaultRegisterables())
-    // provideCharts(withDefaultRegisterables())
+    provideCharts(withDefaultRegisterables()),
+    
   ],
   bootstrap: [AppComponent]
 })

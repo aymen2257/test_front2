@@ -12,14 +12,13 @@ const httpOptions = {
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
-
-  login(credentials:any): Observable<any> {
+  login(credentials: { num: string, password: string, recaptchaResponse: string }): Observable<any> {
     return this.http.post(AppConstants.AUTH_API + 'login', {
       num: credentials.num,
-      password: credentials.password
+      password: credentials.password,
+      recaptchaResponse: credentials.recaptchaResponse
     }, httpOptions);
   }
-
   register(user: any): Observable<any> {
     // return this.http.post(AppConstants.AUTH_API + 'signup', {
     //   id:user.id,

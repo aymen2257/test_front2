@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Make the container take up 80% of the viewport height */
+    text-align: center;
+    flex-direction: column;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #f44336; /* Red color for cancel */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: #555; /* Gray color for text */
+    font-size: 1.2em;
+  }
+  
